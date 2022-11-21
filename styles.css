@@ -1,0 +1,126 @@
+body {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.container-search {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+#city-input {
+  border-radius: 5px;
+}
+#city-form {
+  display: inline;
+}
+#search-button {
+  background: rgb(18, 127, 230);
+  border-color: blue;
+  border-radius: 5px;
+  color: white;
+  transition: all 200ms ease-in-out;
+}
+
+.currentLocButton {
+  background: rgba(186, 180, 4, 0.91);
+  border-color: rgba(147, 140, 1, 0.91);
+  border-radius: 5px;
+  color: white;
+  transition: all 200ms ease-in-out;
+  display: inline;
+  margin: auto;
+}
+
+h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 30px;
+  text-transform: capitalize;
+  margin: 0px;
+  padding: 5px;
+}
+
+.container-currentConditions {
+  text-align: center;
+  border: 1px solid rgb(141, 147, 154);
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  max-width: 650px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 10px;
+}
+.current-data {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+.left-cdata {
+  text-align: left;
+  list-style: none;
+}
+
+#num-temp {
+  font-size: 40px;
+}
+
+#c-link {
+  color: rgb(110, 110, 231);
+}
+
+#f-link {
+  color: rgb(110, 110, 231);
+}
+.units {
+  position: relative;
+  top: -18px;
+  font-size: 16px;
+}
+.five-forecast {
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+  font-size: 25px;
+  padding-top: 50px;
+  text-decoration: underline;
+}
+
+.sunny-current {
+  color: rgb(236, 229, 17);
+  font-size: 100px;
+}
+.container-forecast {
+  padding-bottom: 50px;
+  margin-left: 10px;
+}
+.card {
+  padding-top: 10px;
+}
+.card-body {
+  text-align: center;
+}
+p {
+  padding-top: 50px;
+}
+.rain-cloud-icon {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(41, 41, 149);
+}
+.sunny-icon {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(236, 229, 17);
+}
+.cloud-icon {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(83, 96, 111);
+}
+.snow-icon {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(98, 152, 213);
+}
+
+.footnote {
+  padding-top: 10px;
+  text-align: center;
+}

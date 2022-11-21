@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Weather App</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/87b570d92f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-currentConditions">
+      <div class="container-search">
+        <div class="row">
+          <div class="col-6 col-md-4"></div>
+          <span>
+            <form id="city-form">
+              <input
+                type="text"
+                id="city-input"
+                placeholder="Search for a city"
+              />
+              <input type="submit" id="search-button" value="Search" />
+            </form>
+            <button class="currentLocButton">Use Current Location</button>
+          </span>
+          <div class="col-6 col-md-4"></div>
+          <div class="col-6 col-md-4"></div>
+        </div>
+      </div>
+
+      <br />
+      <h1>Weather For: Chicago</h1>
+      <div class="current-data">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="left-cdata">
+              <li id="current-date">Sunday, 10 am</li>
+              <li id="current-time">Current Time: 6am</li>
+              <li>Condition: <span id="c-cond">Sunny</span></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6">
+            <span id="temp">
+              <img src="http://openweathermap.org/img/wn/01d@2x.png" id="icon"></img>
+              <span id="num-temp">25</span>
+              <span class="units">
+                <a href="#" id="f-link">&deg;F</a>
+                |
+                <a href="#" id="c-link">&deg;C</a>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <p class="five-forecast"><strong>Five Day Forecast</strong></p>
+      <br />
+
+      <div class="container-forecast">
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 6rem">
+              <i class="fa-solid fa-cloud-rain rain-cloud-icon"></i>
+              <div class="card-body">
+                <h5 class="card-day">Mon</h5>
+                <p class="card-text">60&deg;F / <strong> 43&deg;F </strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 6rem">
+              <i class="fa-solid fa-sun sunny-icon"></i>
+              <div class="card-body">
+                <h5 class="card-day">Tues</h5>
+                <p class="card-text">68&deg;F / <strong> 57&deg;F </strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 6rem">
+              <i class="fa-solid fa-cloud cloud-icon"></i>
+              <div class="card-body">
+                <h5 class="card-day">Wed</h5>
+                <p class="card-text">55&deg;F / <strong>36&deg;F</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 6rem">
+              <i class="fa-solid fa-sun sunny-icon"></i>
+              <div class="card-body">
+                <h5 class="card-day">Thurs</h5>
+                <p class="card-text">47&deg;F / <strong>31&deg;F</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 6rem">
+              <i class="fa-regular fa-snowflake snow-icon"></i>
+              <div class="card-body">
+                <h5 class="card-day">Fri</h5>
+                <p class="card-text">23&deg;F / <strong>14&deg;F</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="footnote">
+      <a href="https://github.com/mermaidProgrammer/my-weather-app/find/main">
+        Open-source code</a
+      >
+      <span>by Ariel Maret</span>
+    </p>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
