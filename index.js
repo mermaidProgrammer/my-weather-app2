@@ -35,15 +35,7 @@ function formatDate(cDate) {
   let date = cDate.getDate();
   let year = cDate.getFullYear();
 
-  return `${day}, ${monthShort} ${date}, ${year}`;
-}
-
-//Report out current Date
-let todaysDate = document.querySelector("#current-date");
-todaysDate.innerHTML = formatDate(new Date());
-
-//Report out current Time
-function formatTime(cDate) {
+  //Get current Time
   let hour = cDate.getHours();
   let min = cDate.getMinutes();
   let minString = min;
@@ -51,19 +43,18 @@ function formatTime(cDate) {
     minString = `0${minString}`;
   } else {
   }
-
-  return `Last Updated: ${hour}:${minString}`;
+  return `Updated: ${hour}:${minString}, ${day}, ${monthShort} ${date}, ${year}`;
 }
-let todaysTime = document.querySelector("#current-time");
-todaysTime.innerHTML = formatTime(new Date());
+
+//Report out current Date
+let todaysDate = document.querySelector("#current-date");
+todaysDate.innerHTML = formatDate(new Date());
 
 //Challenge 2- Use a form to update the city name,
 function updateCity(event) {
   event.preventDefault();
   let newCityInput = document.querySelector("#city-input");
   let city = newCityInput.value;
-  let newCity = document.querySelector("h1");
-  newCity.innerHTML = `Weather for: ${city}`;
 
   //Challenge 4 - Update current Temperature for given city
   let apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
@@ -71,6 +62,9 @@ function updateCity(event) {
 
   function showTemperature(response) {
     console.log(response.data);
+    //update city name
+    let newCity = document.querySelector("h1");
+    newCity.innerHTML = `Weather for: ${response.data.name}`;
     //update temperture
     let temperatureElement = document.querySelector("#num-temp");
     let roundTemp = Math.round(response.data.main.temp);
@@ -79,6 +73,9 @@ function updateCity(event) {
     //update condition
     let condElement = document.querySelector("#c-cond");
     condElement.innerHTML = `${response.data.weather[0].main}`;
+    //update windspeed
+    let windSpeedElement = document.querySelector("#w-speed");
+    windSpeedElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
     //update the current weather icon
     let iconElement = document.querySelector("#icon");
     iconElement.setAttribute(
@@ -94,47 +91,6 @@ function updateCity(event) {
 //   Call - Use a form to update the city name
 let searchNewCityForm = document.querySelector("#city-form");
 searchNewCityForm.addEventListener("submit", updateCity);
-
-//Challenge 5 - Use Current Location Button
-function updateLoc() {
-  function cPosition(position) {
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
-
-    let apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
-
-    function showTemperature(response) {
-      console.log(response.data);
-      //Update temperature
-      let temperatureElement = document.querySelector("#num-temp");
-      let roundTemp = Math.round(response.data.main.temp);
-      temperatureElement.innerHTML = `${roundTemp}`;
-      farenheitTemp = roundTemp;
-      //update condition
-      let condElement = document.querySelector("#c-cond");
-      condElement.innerHTML = `${response.data.weather[0].main}`;
-
-      //update the city name
-      let newCity = document.querySelector("h1");
-      newCity.innerHTML = `Weather for: ${response.data.name}`;
-
-      //update the current weather icon
-      let iconElement = document.querySelector("#icon");
-      iconElement.setAttribute(
-        "src",
-        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-      );
-      //update the alternate text in the current weather icon
-      iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
-    }
-    axios.get(apiURL).then(showTemperature);
-  }
-  navigator.geolocation.getCurrentPosition(cPosition);
-}
-//   Call the function
-let cLocButton = document.querySelector(".currentLocButton");
-cLocButton.addEventListener("click", updateLoc);
 
 //Challenge 3 - Switch between Farenheit and Celcius
 function changeC(event) {
