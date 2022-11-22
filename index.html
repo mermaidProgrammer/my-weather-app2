@@ -29,7 +29,7 @@
     <div class="container-currentConditions">
       <div class="container-search">
         <div class="row">
-          <div class="col-6 col-md-4"></div>
+          <div class="col-9"></div>
           <span>
             <form id="city-form">
               <input
@@ -41,8 +41,7 @@
             </form>
             <button class="currentLocButton">Use Current Location</button>
           </span>
-          <div class="col-6 col-md-4"></div>
-          <div class="col-6 col-md-4"></div>
+          
         </div>
       </div>
 
@@ -55,15 +54,16 @@
               <li id="current-date">Sunday, 10 am</li>
               <li id="current-time">Current Time: 6am</li>
               <li>Condition: <span id="c-cond">Sunny</span></li>
+              <li>Wind Speed: <span id ="wind-speed">6</span> mph</li>
             </ul>
           </div>
 
           <div class="col-md-6">
-            <span id="temp">
+            <span id="temp"class = "weather-temperature">
               <img src="http://openweathermap.org/img/wn/01d@2x.png" id="icon"></img>
               <span id="num-temp">25</span>
               <span class="units">
-                <a href="#" id="f-link">&deg;F</a>
+                <a href="#" id="f-link"class="active">&deg;F</a>
                 |
                 <a href="#" id="c-link">&deg;C</a>
               </span>

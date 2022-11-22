@@ -64,15 +64,20 @@ h1 {
 
 #c-link {
   color: rgb(110, 110, 231);
+  text-decoration: none;
 }
 
 #f-link {
   color: rgb(110, 110, 231);
+  text-decoration: none;
 }
 .units {
   position: relative;
   top: -18px;
   font-size: 16px;
+}
+.weather-temperature.active {
+  color: black;
 }
 .five-forecast {
   text-align: center;

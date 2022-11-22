@@ -1,3 +1,6 @@
+//set-up a global variable
+let farenheitTemp = 25;
+
 //Challenge - Get today's date
 function formatDate(cDate) {
   let week = [
@@ -72,6 +75,7 @@ function updateCity(event) {
     let temperatureElement = document.querySelector("#num-temp");
     let roundTemp = Math.round(response.data.main.temp);
     temperatureElement.innerHTML = `${roundTemp}`;
+    farenheitTemp = roundTemp;
     //update condition
     let condElement = document.querySelector("#c-cond");
     condElement.innerHTML = `${response.data.weather[0].main}`;
@@ -81,6 +85,8 @@ function updateCity(event) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+    //update the alternate text in the current weather icon
+    iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
   }
   //  Call - update the current temperature
   axios.get(apiURL).then(showTemperature);
@@ -104,7 +110,7 @@ function updateLoc() {
       let temperatureElement = document.querySelector("#num-temp");
       let roundTemp = Math.round(response.data.main.temp);
       temperatureElement.innerHTML = `${roundTemp}`;
-
+      farenheitTemp = roundTemp;
       //update condition
       let condElement = document.querySelector("#c-cond");
       condElement.innerHTML = `${response.data.weather[0].main}`;
@@ -119,6 +125,8 @@ function updateLoc() {
         "src",
         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
       );
+      //update the alternate text in the current weather icon
+      iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
     }
     axios.get(apiURL).then(showTemperature);
   }
@@ -132,15 +140,24 @@ cLocButton.addEventListener("click", updateLoc);
 function changeC(event) {
   event.preventDefault();
   let temp = document.querySelector("#num-temp");
-  temp.innerHTML = `12.7`;
-}
-let cTemp = document.querySelector("#c-link");
-cTemp.addEventListener("click", changeC);
+  temp.innerHTML = Math.round((farenheitTemp - 32) * (5 / 9));
 
+  //remove active class for farenheit, add active class for celcius
+  fTempLink.classList.remove("active");
+  cTempLink.classList.add("active");
+}
 function changeF(event) {
   event.preventDefault();
   let temp = document.querySelector("#num-temp");
-  temp.innerHTML = `55`;
+  temp.innerHTML = farenheitTemp;
+
+  //remove active class for celcius, add active class for farenheit
+  cTempLink.classList.remove("active"); //this should change the text color from black to blue
+  fTempLink.classList.add("active");
 }
-let fTemp = document.querySelector("#f-link");
-fTemp.addEventListener("click", changeF);
+
+let cTempLink = document.querySelector("#c-link");
+cTempLink.addEventListener("click", changeC);
+
+let fTempLink = document.querySelector("#f-link");
+fTempLink.addEventListener("click", changeF);
