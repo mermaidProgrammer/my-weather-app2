@@ -111,6 +111,13 @@ function updateLoc() {
       //update the city name
       let newCity = document.querySelector("h1");
       newCity.innerHTML = `Weather for: ${response.data.name}`;
+
+      //update the current weather icon
+      let iconElement = document.querySelector("#icon");
+      iconElement.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
     }
     axios.get(apiURL).then(showTemperature);
   }
