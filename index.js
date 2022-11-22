@@ -102,7 +102,8 @@ function updateLoc() {
       console.log(response.data);
       //Update temperature
       let temperatureElement = document.querySelector("#num-temp");
-      temperatureElement.innerHTML = `${response.data.main.temp}`;
+      let roundTemp = Math.round(response.data.main.temp);
+      temperatureElement.innerHTML = `${roundTemp}`;
 
       //update condition
       let condElement = document.querySelector("#c-cond");
