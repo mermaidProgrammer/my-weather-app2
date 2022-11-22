@@ -75,6 +75,12 @@ function updateCity(event) {
     //update condition
     let condElement = document.querySelector("#c-cond");
     condElement.innerHTML = `${response.data.weather[0].main}`;
+    //update the current weather icon
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
   }
   //  Call - update the current temperature
   axios.get(apiURL).then(showTemperature);
