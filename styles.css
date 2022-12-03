@@ -66,7 +66,7 @@ h1 {
   top: -18px;
   font-size: 16px;
 }
-.weather-temperature.active {
+.weather-temperture.active {
   color: black;
 }
 .five-forecast {
@@ -84,12 +84,17 @@ h1 {
 .container-forecast {
   padding-bottom: 50px;
   margin-left: 10px;
-}
-.card {
-  padding-top: 10px;
-}
-.card-body {
   text-align: center;
+  color: rgb(4, 165, 214);
+}
+.container-forecast-date {
+  font-size: 16 px;
+}
+.container-forecast-temperatures {
+  font-size: 13px;
+}
+.container-forecast-temperature-min {
+  opacity: 0.5;
 }
 p {
   padding-top: 50px;
