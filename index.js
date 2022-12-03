@@ -124,3 +124,31 @@ cTempLink.addEventListener("click", changeC);
 
 let fTempLink = document.querySelector("#f-link");
 fTempLink.addEventListener("click", changeF);
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2">
+            <div class="container-forecast-date">${day}</div>
+                <img
+                src="http://openweathermap.org/img/wn/01d@2x.png"
+                id="icon"
+                width="42px"
+                ></img>
+                <div class="container-forecast-temperatures">
+                    <span class="container-forecast-temperature-max">18&deg;</span>
+                    <span class="container-forecast-temperature-min">12&deg;</span>
+                </div>
+        </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
