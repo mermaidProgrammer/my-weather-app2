@@ -46,6 +46,13 @@ function formatDate(cDate) {
   return `Updated: ${hour}:${minString}, ${day}, ${monthShort} ${date}, ${year}`;
 }
 
+//Update the forecast
+function getForecast(coordinates) {
+  let apiKey = "4c9b53e4f8f5eb00df5915bdca340605";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiURL).then(displayForecast);
+}
+
 //Challenge 4 - Update current Temperature for given city
 function showTemperature(response) {
   console.log(response.data);
@@ -71,6 +78,9 @@ function showTemperature(response) {
   );
   //update the alternate text in the current weather icon
   iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
+
+  //call function to update the forecast
+  getForecast(response.data.coord);
 }
 
 //Challenge 2- Use a form to update the city name
@@ -125,7 +135,9 @@ cTempLink.addEventListener("click", changeC);
 let fTempLink = document.querySelector("#f-link");
 fTempLink.addEventListener("click", changeF);
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -150,5 +162,3 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-displayForecast();
